@@ -1,5 +1,5 @@
 # PHP NEWS WEB SITE PROJECT
-## Creators: Tamerlan(me), Danial(github: <a href='https:/github.com/selnoron'>@selnoron</a>), Bekarys
+## Creators: Tamerlan(me), Danial(github: <a href='https:/selnoron'>@selnoron</a>), Bekarys
 ### HOW TO START:
 ### `START APACHE AT XAMPP`
 ### `START MYSQL AT XAMPP`
