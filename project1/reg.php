@@ -21,30 +21,56 @@
         <input type="submit" value="Добавить">
     </form>
     <?php
-        require_once ("conn.php");
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $age = $_POST['age'];
-        $password = $_POST['password'];
-        $password2 = $_POST['password2'];
-        if ($password != $password2) {
-            echo 'Пароли не совпадают';
-        }
-        else if ($age < 16) {
-            echo 'Вы неудостоверенная личность';
-        }
+        if (count($_POST) == 0) {}
         else {
-            $sql = "INSERT INTO users (username, email, age, password) VALUES ('$username', '$email', $age, '$password')";
-            if (mysqli_query($connect, $sql)) {
-                $new_url = 'http://localhost/dostyq/project1/auth.php';
-                header('Location: '.$new_url);
-            } 
-            else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($connect);
+            require_once ("conn.php");
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $age = $_POST['age'];
+            $password = $_POST['password'];
+            $password2 = $_POST['password2'];
+            $email_names = array('gmail', 'mail', 'yahoo');
+            $email_domens = array('com', 'ru', 'kz', 'uk');
+            if ($password != $password2) {
+                echo 'Пароли не совпадают';
             }
-        }
+            else if (strlen($password) < 8) {
+                echo 'Пароль должен иметь больше 7 символов';
+            }
+            else if ($age < 16) {
+                echo 'Вы неудостоверенная личность';
+            }
+            else {
+                $cur_pass = strrev($password);
+                if (strpos($email, '@') == false) {
+                    echo 'email is not correct';
+                }
+                else {
+                    $two_em = explode('@', $email);
+                    if (strpos($two_em[1], '.') == false) {
+                        echo 'email is not correct';
+                    }
+                    else {
+                        $sec_em = explode('.', $two_em[1]);
+                        if (in_array($sec_em[0], $email_names) == false or in_array($sec_em[1], $email_domens) == false) {
+                            echo 'email is not correct';
+                        }
+                        else {
+                            $sql = "INSERT INTO users (username, email, age, password) VALUES ('$username', '$email', $age, '$cur_pass')";
+                            if (mysqli_query($connect, $sql)) {
+                                $new_url = 'http://localhost/dos/dostyq_php1/project1/auth.php';
+                                header('Location: '.$new_url);
+                            } 
+                            else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($connect);
+                            }
+                        }
 
-        mysqli_close($connect);
+                    }
+                }
+            }
+            mysqli_close($connect);
+        }
     ?>
 </body>
 </html>

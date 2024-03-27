@@ -30,7 +30,7 @@
                 echo 'Неверный пароль';
             }
             else {
-                $new_url = 'http://localhost/dostyq/project1/blog.php';
+                $new_url = 'http://localhost/dos/dostyq_php1/project1/blog.php';
                 header('Location: '.$new_url);
             }
         }
