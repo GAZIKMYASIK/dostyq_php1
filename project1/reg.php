@@ -98,7 +98,7 @@
     </form>
     <br><br><br>
     <center>
-        <a href="http://localhost/dos/dostyq_php1/project1/auth.php">Есть аккаунт?</a>
+        <a href="http://localhost/dostyq_php1/project1/auth.php">Есть аккаунт?</a>
         <div class="cen">
         <?php
             if (count($_POST) == 0) {}
@@ -148,7 +148,7 @@
                                 else {
                                     $sql = "INSERT INTO users (username, email, age, password) VALUES ('$username', '$email', $age, '$cur_pass')";
                                     if (mysqli_query($connect, $sql)) {
-                                        $new_url = 'http://localhost/dos/dostyq_php1/project1/auth.php';
+                                        $new_url = 'http://localhost/dostyq_php1/project1/auth.php';
                                         header('Location: '.$new_url);
                                     } 
                                     else {

@@ -86,7 +86,7 @@
     </form>
     <br><br>   
     <center>
-        <a href="http://localhost/dos/dostyq_php1/project1/reg.php">Нет аккаунта?</a>
+        <a href="http://localhost/dostyq_php1/project1/reg.php">Нет аккаунта?</a>
         <div class="cen">
             <?php
             if (count($_POST) == 0) {}
@@ -110,7 +110,7 @@
                             echo 'Неверный пароль';
                         }
                         else {
-                            $new_url = 'http://localhost/dos/dostyq_php1/project1/blog.php';
+                            $new_url = 'http://localhost/dostyq_php1/project1/blog.php';
                             header('Location: ' . $new_url);
                         }
                     }
