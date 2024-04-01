@@ -21,7 +21,7 @@
         $sql = "INSERT INTO news (title, text) VALUES ('$title', '$text')";
         if (isset($_POST["title"]) && isset($_POST["text"])){
             if (mysqli_query($connect, $sql)) {
-                $new_url = 'http://localhost/dostyq/project1/blog.php';
+                $new_url = 'http://localhost/dos/dostyq_php1/project1/blog.php';
                 header('Location: '.$new_url);
             } 
         }
